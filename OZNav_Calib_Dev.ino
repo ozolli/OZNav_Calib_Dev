@@ -15,6 +15,26 @@ Cela permet de corriger les variations de vitesse (surface et rotation) du cercl
 On a besoin de CurveExpert Basic pour déterminer les coefficients de l'équation en
 fonction des données recueillies et du modèle d'équation custom suivant :
 a+b*sin(radians(x))+c*cos(radians(x))+d*sin(radians(x)*2)+e*cos(radians(x)*2)
+Pour créer le modèle custom :
+1. Ouvrir CurveExpert Basic
+2. Tools -> Create Custom Models...
+3. Copier-coller le modèle ci-dessus (a+b*sin... etc) dans Model Equation
+4. Save As... Compas -> OK
+
+Préparation des données et calcul de la courbe :
+1. Commencer une rotation un peu avant 0°
+2. Faire au moins un tour
+3. Copier-coller le contenu du moniteur série dans une feuille LibreOffice Calc
+1. Supprimer les premières valeurs dans les 359 et moins
+2. Supprimer les dernières valeurs après 359 dans la colonne B
+3. Faire le ratio B/A de la dernière ligne
+4. Nouvelle colonne C = A * ratio
+5. Nouvelle colonne D = B - C
+6. Sélectionner et copier les colonnes B et D
+7. Ouvrir CurveExpert Basic
+8. File -> New from Clipboard... -> OK
+9. Calculate -> Nonlinear Model Fit... -> Custom -> Compas -> OK
+10. Reporter les paramètres a à e dans OZNav / compas.h
 */
 
 #include <Wire.h>
