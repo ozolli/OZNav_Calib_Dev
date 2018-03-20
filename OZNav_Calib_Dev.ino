@@ -87,10 +87,8 @@ int accel_offset[3]             = { -14, 20, -27 };
 void setup(void)
 {
   Serial.begin(38400);
-  while (!Serial) {
-    delay(1);
-  }
-
+  while (!Serial) delay(1);
+  
   Serial.println("c <Entrée> pour calibrer le gyroscope");
   Serial.println("e <Entrée> pour commencer l'enregistrement");
 
